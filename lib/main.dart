@@ -5,21 +5,25 @@ import 'model/article_model.dart';
 import 'services/api_service.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: HomePage(),
+    return const MaterialApp(
+      home:  HomePage(),
     );
   }
 }
 
 class HomePage extends StatefulWidget {
+  const HomePage({Key? key}) : super(key: key);
+
   @override
-  _HomePageState createState() => _HomePageState();
+  State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
@@ -38,12 +42,11 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: Text("News App", style: TextStyle(color: Colors.black)),
+          title: const Text("News App", style: TextStyle(color: Colors.black)),
           backgroundColor: Colors.white),
       body: FutureBuilder(
         future: getArticles,
         builder: (BuildContext context, AsyncSnapshot<List<Article>> snapshot) {
-          print(snapshot);
           if (snapshot.hasData) {
             List<Article> articles = snapshot.data as List<Article>;
             return ListView.builder(
@@ -51,7 +54,7 @@ class _HomePageState extends State<HomePage> {
                 itemBuilder: (context, index) =>
                     customListTile(articles[index], context));
           }
-          return Center(
+          return const Center(
             child: CircularProgressIndicator(),
           );
         },
