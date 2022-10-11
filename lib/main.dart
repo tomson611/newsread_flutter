@@ -13,8 +13,23 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home:  HomePage(),
+    return MaterialApp(
+      title: 'NewsRead',
+      
+      home: const HomePage(),
+      theme: ThemeData(
+        fontFamily: 'Lato',
+        brightness: Brightness.light,
+        primaryColor: Colors.orange,
+        appBarTheme: const AppBarTheme(
+          color: Colors.orange,
+        ),
+        textTheme: const TextTheme(
+          bodyText2: TextStyle(
+            fontSize: 14.0,
+          ),
+        ),
+      ),
     );
   }
 }
@@ -42,17 +57,23 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: const Text("News App", style: TextStyle(color: Colors.black)),
-          backgroundColor: Colors.white),
+        title: const Text(
+          "NewsRead",
+          style: TextStyle(
+            color: Colors.white,
+          ),
+        ),
+      ),
       body: FutureBuilder(
         future: getArticles,
         builder: (BuildContext context, AsyncSnapshot<List<Article>> snapshot) {
           if (snapshot.hasData) {
             List<Article> articles = snapshot.data as List<Article>;
             return ListView.builder(
-                itemCount: articles.length,
-                itemBuilder: (context, index) =>
-                    customListTile(articles[index], context));
+              itemCount: articles.length,
+              itemBuilder: (context, index) =>
+                  customListTile(articles[index], context),
+            );
           }
           return const Center(
             child: CircularProgressIndicator(),
