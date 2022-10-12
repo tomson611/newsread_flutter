@@ -15,21 +15,25 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'NewsRead',
-      
       home: const HomePage(),
       theme: ThemeData(
-        fontFamily: 'Lato',
-        brightness: Brightness.light,
-        primaryColor: Colors.orange,
-        appBarTheme: const AppBarTheme(
-          color: Colors.orange,
-        ),
-        textTheme: const TextTheme(
-          bodyText2: TextStyle(
-            fontSize: 14.0,
+          fontFamily: 'Lato',
+          brightness: Brightness.light,
+          primaryColor: Colors.orange,
+          appBarTheme: const AppBarTheme(
+            color: Colors.orange,
           ),
-        ),
-      ),
+          textTheme: const TextTheme(
+            bodyText2: TextStyle(
+              fontSize: 14.0,
+            ),
+          ),
+          elevatedButtonTheme: ElevatedButtonThemeData(
+            style: ElevatedButton.styleFrom(
+              shape: const StadiumBorder(),
+              primary: Colors.orange,
+            ),
+          )),
     );
   }
 }
