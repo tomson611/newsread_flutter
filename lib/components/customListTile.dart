@@ -53,7 +53,7 @@ Widget customListTile(Article article, BuildContext context) {
           Container(
             padding: EdgeInsets.all(6.0),
             decoration: BoxDecoration(
-              color: Colors.red,
+              color: Theme.of(context).primaryColor,
               borderRadius: BorderRadius.circular(30.0),
             ),
             child: Text(
@@ -70,6 +70,11 @@ Widget customListTile(Article article, BuildContext context) {
               fontWeight: FontWeight.bold,
               fontSize: 16.0,
             ),
+          ),
+          SizedBox(height: 8.0),
+          ElevatedButton(
+            onPressed: () {},
+            child: const Text('Read'),
           )
         ],
       ),
