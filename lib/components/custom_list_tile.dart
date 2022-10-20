@@ -1,15 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:newsread_flutter/components/web_view.dart';
 
 import '../model/article_model.dart';
-import '../pages/articles_details_page.dart';
 
 Widget customListTile(Article article, BuildContext context) {
   return InkWell(
     onTap: () {
       Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (context) => ArticlePage(article: article)));
+        context,
+        MaterialPageRoute(
+          builder: (context) => WebView(
+            url: article.url,
+            title: article.title,
+          ),
+        ),
+      );
     },
     child: Container(
       margin: const EdgeInsets.all(12.0),
@@ -18,7 +23,7 @@ Widget customListTile(Article article, BuildContext context) {
           color: Colors.white,
           borderRadius: BorderRadius.circular(12.0),
           boxShadow: const [
-            BoxShadow( 
+            BoxShadow(
               color: Colors.black12,
               blurRadius: 3.0,
             ),
@@ -73,9 +78,18 @@ Widget customListTile(Article article, BuildContext context) {
           ),
           const SizedBox(height: 8.0),
           ElevatedButton(
-            onPressed: () {},
-            child: const Text('Read'),
-          )
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => WebView(
+                      url: article.url,
+                      title: article.title,
+                    ),
+                  ),
+                );
+              },
+              child: const Text('Read'))
         ],
       ),
     ),
