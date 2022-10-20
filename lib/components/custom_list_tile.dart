@@ -75,7 +75,21 @@ Widget customListTile(Article article, BuildContext context) {
               fontWeight: FontWeight.bold,
               fontSize: 16.0,
             ),
-            )
+          ),
+          const SizedBox(height: 8.0),
+          ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => WebView(
+                      url: article.url,
+                      title: article.title,
+                    ),
+                  ),
+                );
+              },
+              child: const Text('Read'))
         ],
       ),
     ),
