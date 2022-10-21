@@ -55,8 +55,12 @@ class _HomePageState extends State<HomePage> {
     super.initState();
   }
 
-  // ApiService client = ApiService();
-
+  Future<void> _pullRefresh() async {
+    setState(() {
+      getArticles = client.getArticle();
+    });
+  }
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -73,10 +77,13 @@ class _HomePageState extends State<HomePage> {
         builder: (BuildContext context, AsyncSnapshot<List<Article>> snapshot) {
           if (snapshot.hasData) {
             List<Article> articles = snapshot.data as List<Article>;
-            return ListView.builder(
-              itemCount: articles.length,
-              itemBuilder: (context, index) =>
-                  customListTile(articles[index], context),
+            return RefreshIndicator(
+              onRefresh: _pullRefresh,
+              child: ListView.builder(
+                itemCount: articles.length,
+                itemBuilder: (context, index) =>
+                    customListTile(articles[index], context),
+              ),
             );
           }
           return const Center(
