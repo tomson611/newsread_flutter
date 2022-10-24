@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:newsread_flutter/components/web_view.dart';
+import 'package:newsread_flutter/screens/widgets/web_view.dart';
 
-import '../model/article_model.dart';
+import '/../model/article_model.dart';
 
 Widget customListTile(Article article, BuildContext context) {
   return InkWell(

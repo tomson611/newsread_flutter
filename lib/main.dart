@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'components/custom_list_tile.dart';
+import 'screens/widgets/custom_list_tile.dart';
 import 'model/article_model.dart';
 import 'services/api_service.dart';
 
