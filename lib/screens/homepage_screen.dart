@@ -26,7 +26,7 @@ class _HomePageState extends State<HomePage> {
       getArticles = client.getArticle();
     });
   }
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,8 +47,9 @@ class _HomePageState extends State<HomePage> {
               onRefresh: _pullRefresh,
               child: ListView.builder(
                 itemCount: articles.length,
-                itemBuilder: (context, index) =>
-                    customListTile(articles[index], context),
+                itemBuilder: (context, index) => CustomListTile(
+                  article: articles[index],
+                ),
               ),
             );
           }
