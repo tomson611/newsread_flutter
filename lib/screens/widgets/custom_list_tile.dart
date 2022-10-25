@@ -54,8 +54,8 @@ class CustomListTile extends StatelessWidget {
                     width: double.infinity,
                     decoration: BoxDecoration(
                       image: const DecorationImage(
-                          image: NetworkImage(
-                              'https://source.unsplash.com/weekly?coding'),
+                          image: AssetImage(
+                              'assets/images/image_not_available.png'),
                           fit: BoxFit.cover),
                       borderRadius: BorderRadius.circular(12.0),
                     ),
