@@ -1,9 +1,8 @@
-import 'package:flutter/material.dart';
-import 'package:newsread_flutter/screens/homepage_screen.dart';
 
-import 'screens/widgets/custom_list_tile.dart';
-import 'model/article_model.dart';
-import 'services/api_service.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:newsread_flutter/repository/article_repository.dart';
+import 'package:newsread_flutter/screens/homepage_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +15,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'NewsRead',
-      home: const HomePage(),
+      home:  RepositoryProvider(
+        create: (context) => ArticleRepository(),
+        child: const HomePage(),
+      ),
       theme: ThemeData(
           fontFamily: 'Lato',
           brightness: Brightness.light,

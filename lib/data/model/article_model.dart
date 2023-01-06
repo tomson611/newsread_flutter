@@ -1,4 +1,7 @@
+import 'dart:convert';
 import 'source_model.dart';
+
+Article articleModelFromJson(String str) => Article.fromJson(json.decode(str));
 
 class Article {
   Source source;
