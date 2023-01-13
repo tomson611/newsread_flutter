@@ -11,7 +11,6 @@ class ArticleBloc extends Bloc<ArticleEvent, ArticleState> {
       emit(ArticleLoadingState());
       try {
         final article = await _articleRepository.getArticle();
-        print(article);
         emit(ArticleLoadedState(article));
       } catch (e) {
         emit(ArticleErrorState(e.toString()));
