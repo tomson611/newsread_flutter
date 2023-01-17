@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:newsread_flutter/articles_page.dart';
+import 'package:newsread_flutter/article/view/articles_page.dart';
 
 class App extends MaterialApp {
   App({super.key})

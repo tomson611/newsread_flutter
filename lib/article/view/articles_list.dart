@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:newsread_flutter/bloc/article_bloc.dart';
-import 'package:newsread_flutter/bloc/article_state.dart';
-import 'package:newsread_flutter/screens/widgets/custom_list_tile.dart';
+import 'package:newsread_flutter/article/bloc/article_bloc.dart';
+import 'package:newsread_flutter/article/bloc/article_state.dart';
+import 'package:newsread_flutter/article/widgets/custom_list_tile.dart';
 
 class ArticlesList extends StatelessWidget {
   const ArticlesList({super.key});

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:newsread_flutter/data/model/article_model.dart';
-import 'package:newsread_flutter/screens/widgets/web_view.dart';
+import 'package:newsread_flutter/data/repository/model/article_model.dart';
+import 'package:newsread_flutter/webview/view/web_view.dart';
 
 
 class CustomListTile extends StatelessWidget {

@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:newsread_flutter/data/model/article_model.dart';
+import 'package:newsread_flutter/data/repository/model/article_model.dart';
 import 'package:newsread_flutter/keys.dart';
 
 class ArticleRepository {

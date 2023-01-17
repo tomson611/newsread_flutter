@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:newsread_flutter/bloc/article_events.dart';
-import 'package:newsread_flutter/bloc/article_state.dart';
-import 'package:newsread_flutter/repository/article_repository.dart';
+import 'package:newsread_flutter/article/bloc/article_events.dart';
+import 'package:newsread_flutter/article/bloc/article_state.dart';
+import 'package:newsread_flutter/data/repository/article_repository.dart';
 
 class ArticleBloc extends Bloc<ArticleEvent, ArticleState> {
   final ArticleRepository _articleRepository;
