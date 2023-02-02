@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:equatable/equatable.dart';
-import 'package:newsread_flutter/data/repository/model/article_model.dart';
+import 'package:newsread_flutter/repository/model/article_model.dart';
 
 @immutable
 abstract class ArticleState extends Equatable {}
