@@ -10,7 +10,21 @@ class ArticleBloc extends Bloc<ArticleEvent, ArticleState> {
     on<LoadArticleEvent>((event, emit) async {
       emit(ArticleLoadingState());
       try {
-        final article = await _articleRepository.getArticle();
+        final article =
+            await _articleRepository.getArticles(country: event.country);
+        emit(ArticleLoadedState(article));
+      } catch (e) {
+        emit(ArticleErrorState(e.toString()));
+      }
+    });
+
+    on<LoadSearchedArticlesEvent>((event, emit) async {
+      emit(ArticleLoadingState());
+      try {
+        final article = await _articleRepository.searchArticles(
+          query: event.query,
+          country: event.country,
+        );
         emit(ArticleLoadedState(article));
       } catch (e) {
         emit(ArticleErrorState(e.toString()));

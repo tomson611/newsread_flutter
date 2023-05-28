@@ -1,84 +1,65 @@
 import 'package:flutter/material.dart';
-import 'package:newsread_flutter/article/view/article_details.dart';
-import 'package:newsread_flutter/repository/model/article_model.dart';
 
-class CustomListTile extends StatefulWidget {
-  const CustomListTile({required this.article, super.key});
+class ArticleDetails extends StatelessWidget {
+  const ArticleDetails({
+    required this.author,
+    required this.publishedAt,
+    required this.urlToImage,
+    required this.title,
+    required this.description,
+    required this.content,
+    super.key,
+  });
 
-  final Article article;
-
-  @override
-  State<CustomListTile> createState() => _CustomListTileState();
-}
-
-class _CustomListTileState extends State<CustomListTile> {
-
-  Route _createRoute() {
-    return PageRouteBuilder(
-      pageBuilder: (context, animation, secondaryAnimation) => ArticleDetails(
-        author: widget.article.author,
-        publishedAt: widget.article.publishedAt,
-        urlToImage: widget.article.urlToImage,
-        title: widget.article.title,
-        description: widget.article.description,
-        content: widget.article.content,
-      ),
-      transitionsBuilder: (context, animation, secondaryAnimation, child) {
-        const begin = Offset(0.0, 1.0);
-        const end = Offset.zero;
-        const curve = Curves.ease;
-
-        var tween =
-            Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
-
-        return SlideTransition(
-          position: animation.drive(tween),
-          child: child,
-        );
-      },
-    );
-  }
+  final String author;
+  final String publishedAt;
+  final String urlToImage;
+  final String title;
+  final String description;
+  final String content;
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      child: InkWell(
-        onTap: () {
-          Navigator.of(context).push(_createRoute());
-        },
-        child: Container(
-          margin: const EdgeInsets.only(
-            bottom: 50.0,
-          ),
-          padding: const EdgeInsets.only(
-            left: 0.0,
-          ),
-          decoration: const BoxDecoration(
-            color: Colors.white,
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black12,
-                blurRadius: 10.0,
-              ),
-            ],
-          ),
+    String formattedDate = DateTime.parse(publishedAt).toString();
+    formattedDate = formattedDate.substring(0, formattedDate.length - 5);
+
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          'NewsRead',
+          style: Theme.of(context).appBarTheme.titleTextStyle,
+        ),
+      ),
+      body: Container(
+        decoration: const BoxDecoration(
+          color: Colors.white,
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black12,
+              blurRadius: 10.0,
+            ),
+          ],
+        ),
+        child: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              widget.article.urlToImage != ''
+              urlToImage != ''
                   ? Container(
-                      height: 250.0,
+                      height: 400.0,
                       width: double.infinity,
                       decoration: BoxDecoration(
                         image: DecorationImage(
-                          image: NetworkImage(widget.article.urlToImage),
+                          image: NetworkImage(
+                            urlToImage,
+                          ),
                           fit: BoxFit.cover,
                         ),
                       ),
                     )
                   : Container(
-                      height: 250.0,
+                      height: 250,
                       width: double.infinity,
                       decoration: BoxDecoration(
                         image: const DecorationImage(
@@ -105,7 +86,7 @@ class _CustomListTileState extends State<CustomListTile> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      widget.article.title,
+                      title,
                       style: const TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 25.0,
@@ -116,11 +97,29 @@ class _CustomListTileState extends State<CustomListTile> {
                       height: 10,
                     ),
                     Text(
-                      widget.article.description,
+                      description,
                       style: const TextStyle(
                         fontStyle: FontStyle.italic,
-                        color: Colors.grey,
                         fontSize: 16.0,
+                        height: 1.4,
+                        color: Colors.grey,
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Text(formattedDate),
+                    const SizedBox(
+                      height: 5,
+                    ),
+                    Text(author),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Text(
+                      content,
+                      style: const TextStyle(
+                        fontSize: 14.0,
                         height: 1.4,
                       ),
                     ),

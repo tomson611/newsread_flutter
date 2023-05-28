@@ -8,19 +8,32 @@ class App extends MaterialApp {
           theme: ThemeData(
             fontFamily: 'Lato',
             brightness: Brightness.light,
-            primaryColor: Colors.orange,
+            scaffoldBackgroundColor: Colors.white,
             appBarTheme: const AppBarTheme(
-              color: Colors.orange,
+              iconTheme: IconThemeData(
+                color: Colors.black,
+              ),
+              centerTitle: true,
+              titleTextStyle: TextStyle(
+                color: Colors.black,
+                fontSize: 25,
+                fontWeight: FontWeight.bold,
+              ),
+              backgroundColor: Colors.transparent,
+              elevation: 0,
             ),
             textTheme: const TextTheme(
-              bodyText2: TextStyle(
+              bodyMedium: TextStyle(
                 fontSize: 14.0,
+                color: Colors.black,
               ),
             ),
             elevatedButtonTheme: ElevatedButtonThemeData(
               style: ElevatedButton.styleFrom(
-                shape: const StadiumBorder(),
-                backgroundColor: Colors.orange,
+                shape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.zero,
+                ),
+                backgroundColor: Colors.blue,
               ),
             ),
           ),
