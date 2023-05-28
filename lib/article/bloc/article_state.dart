@@ -3,7 +3,9 @@ import 'package:equatable/equatable.dart';
 import 'package:newsread_flutter/repository/model/article_model.dart';
 
 @immutable
-abstract class ArticleState extends Equatable {}
+abstract class ArticleState extends Equatable  {} 
+
+
 
 class ArticleLoadingState extends ArticleState {
   @override

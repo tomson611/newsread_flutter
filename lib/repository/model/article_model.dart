@@ -5,7 +5,7 @@ class Article {
   String author;
   String title;
   String description;
-  String url;
+  String content;
   String urlToImage;
   String publishedAt;
 
@@ -14,7 +14,7 @@ class Article {
       required this.author,
       required this.title,
       required this.description,
-      required this.url,
+      required this.content,
       required this.urlToImage,
       required this.publishedAt,
       });
@@ -25,7 +25,7 @@ class Article {
       author: json['author'] ?? '',
       title: json['title'] as String,
       description: json['description'] ?? '',
-      url: json['url'] as String,
+      content: json['content'] as String,
       urlToImage: json['urlToImage'] ?? '',
       publishedAt: json['publishedAt'] as String,
     );
