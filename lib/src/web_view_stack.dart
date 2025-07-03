@@ -1,4 +1,3 @@
-import 'dart:async'; // Add this import for Completer
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
