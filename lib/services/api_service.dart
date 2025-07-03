@@ -1,8 +1,7 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:newsread_flutter/keys.dart';
-
-import '../model/article_model.dart';
+import 'package:newsread_flutter/model/article_model.dart';
+import '../keys.dart';
 
 class ApiService {
   final endPointUrl = "newsapi.org";

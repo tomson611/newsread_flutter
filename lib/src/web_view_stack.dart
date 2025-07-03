@@ -9,7 +9,7 @@ class WebViewStack extends StatefulWidget {
     super.key,
   }); // Modify
 
-  final Completer<WebViewController> controller; // Add this attribute
+  final WebViewController controller;
   final String url;
 
   @override
@@ -18,18 +18,14 @@ class WebViewStack extends StatefulWidget {
 
 class _WebViewStackState extends State<WebViewStack> {
   var loadingPercentage = 0;
- 
+
   @override
-  Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        WebView(
-          initialUrl: widget.url,
-          // Add from here ...
-          onWebViewCreated: (webViewController) {
-            widget.controller.complete(webViewController);
-          },
-          // ... to here.
+  void initState() {
+    super.initState();
+    widget.controller
+      ..setJavaScriptMode(JavaScriptMode.unrestricted)
+      ..setNavigationDelegate(
+        NavigationDelegate(
           onPageStarted: (url) {
             setState(() {
               loadingPercentage = 0;
@@ -45,7 +41,17 @@ class _WebViewStackState extends State<WebViewStack> {
               loadingPercentage = 100;
             });
           },
-          javascriptMode: JavascriptMode.unrestricted,
+        ),
+      )
+      ..loadRequest(Uri.parse(widget.url));
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: [
+        WebViewWidget(
+          controller: widget.controller,
         ),
         if (loadingPercentage < 100)
           LinearProgressIndicator(
